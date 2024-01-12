@@ -3,6 +3,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
+import "./Login.css";
 
 const Login = function (props) {
   const [username, setUsername] = useState("");
@@ -17,28 +18,35 @@ const Login = function (props) {
   };
 
   return (
-    <Card>
-      <CardContent>
-        <TextField
-          label="Usuario"
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          fullWidth
-        />
-        <TextField
-          label="Contraseña"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          fullWidth
-        />
-        <br />
-        <Button variant="contained" onClick={handleLogin} fullWidth>
-          Iniciar sesión
-        </Button>
-      </CardContent>
-    </Card>
+    <div className="login-container">
+      <Card className="login-card">
+        <CardContent>
+          <TextField
+            label="Usuario"
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            fullWidth
+          />
+          <TextField
+            label="Contraseña"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            fullWidth
+          />
+          <br />
+          <Button
+            variant="contained"
+            onClick={handleLogin}
+            fullWidth
+            className="login-button"
+          >
+            Iniciar sesión
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
   );
 };
 

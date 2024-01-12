@@ -26,7 +26,7 @@ function Characters() {
 
   return (
     <div className="characters-container">
-      <h1>Characters</h1>
+      <h1>Personajes</h1>
       <div className="characters-grid">{characters.map(renderCharacter)}</div>
     </div>
   );

@@ -1,0 +1,16 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-card {
+  max-width: 400px;
+  width: 100%;
+  padding: 16px;
+}
+
+.login-button {
+  margin-top: 16px;
+}
