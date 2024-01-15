@@ -15,7 +15,7 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { Link, useNavigate } from "react-router-dom";
-import './Navbar.css'
+import "./Navbar.css";
 
 const pages = ["Todos los Personajes", "Agregar Personaje", "Buscar Personaje"];
 const settings = ["Perfil", "Cuenta"];
@@ -144,7 +144,12 @@ function Navbar({ onLogout }) {
               >
                 {settings.map((setting) => (
                   <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Typography textAlign="center">{setting}</Typography>
+                    <Link
+                      to="/perfil"
+                      style={{ textDecoration: "none", color: "inherit" }}
+                    >
+                      <Typography textAlign="center">{setting}</Typography>
+                    </Link>
                   </MenuItem>
                 ))}
               </Menu>

@@ -89,3 +89,7 @@ h2 {
 .character-card button:hover {
   opacity: 0.8;
 }
+
+h1, h2 {
+  color:  #ffc107;
+}

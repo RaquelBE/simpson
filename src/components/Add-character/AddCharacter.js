@@ -10,8 +10,9 @@ function AddCharacter() {
 
   const [status, setStatus] = useState({
     vivo: false,
-    muerto: false,
+    fallecido: false,
     jubilado: false,
+    ficticio: false,
   });
   const [occupation, setOccupation] = useState("");
   const [imageURL, setImageURL] = useState("");
@@ -151,11 +152,11 @@ function AddCharacter() {
               />
             </label>
             <label>
-              Muerto
+              Fallecido
               <input
                 type="checkbox"
                 checked={status.muerto}
-                onChange={() => handleCheckboxChange("status", "muerto")}
+                onChange={() => handleCheckboxChange("status", "fallecido")}
               />
             </label>
             <label>
@@ -164,6 +165,22 @@ function AddCharacter() {
                 type="checkbox"
                 checked={status.jubilado}
                 onChange={() => handleCheckboxChange("status", "jubilado")}
+              />
+            </label>
+            <label>
+              Ficticio
+              <input
+                type="checkbox"
+                checked={status.ficticio}
+                onChange={() => handleCheckboxChange("status", "ficticio")}
+              />
+            </label>
+            <label>
+              Otro
+              <input
+                type="checkbox"
+                checked={status.otro}
+                onChange={() => handleCheckboxChange("status", "otro")}
               />
             </label>
           </label>

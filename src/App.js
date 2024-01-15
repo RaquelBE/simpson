@@ -1,3 +1,5 @@
+// App.js
+
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
@@ -6,6 +8,7 @@ import Navbar from "./components/navbar/Navbar";
 import AddCharacter from "./components/Add-character/AddCharacter";
 import Characters from "./components/characters/characters";
 import SearchCharacter from "./components/Search-character/SearchCharacter";
+import Profile from "./components/Profile/Profile"; // Asegúrate de importar correctamente
 
 const App = function () {
   const [loggedInUser, setLoggedInUser] = useState(null);
@@ -22,25 +25,28 @@ const App = function () {
     <Router>
       <div className="container">
         {loggedInUser ? (
-          <div>
+          <>
             <Navbar onLogout={handleLogout} />
             <Routes>
               <Route
                 path="/todos-los-personajes"
                 element={<Characters loggedInUser={loggedInUser} />}
               />
-              <Route path="/" element={<h1>Bienvenido, {loggedInUser}!</h1>} />
               <Route
                 path="/agregar-personaje"
                 element={<AddCharacter loggedInUser={loggedInUser} />}
               />
-
               <Route
                 path="/buscar-personaje"
                 element={<SearchCharacter loggedInUser={loggedInUser} />}
               />
+              <Route
+                path="/perfil"
+                element={<Profile loggedInUsername={loggedInUser} />}
+              />
+              <Route path="/" element={<h1>Bienvenido, {loggedInUser}!</h1>} />
             </Routes>
-          </div>
+          </>
         ) : (
           <div>
             <Login onLogin={handleLogin} />

@@ -36,7 +36,7 @@ function Characters() {
       <img src={character.Imagen} alt={character.name} />
       <p>Nombre: {character.Nombre}</p>
       <p>Genero: {character.Genero}</p>
-      <p>Estado: {character.status}</p>
+      <p>Estado: {character.Estado}</p>
       <p>Ocupación: {character.Ocupacion}</p>
       <p>Historia: {character.Historia}</p>
     </div>
@@ -47,18 +47,18 @@ function Characters() {
       <h1>Personajes</h1>
       <div className="characters-grid">{characters.map(renderCharacter)}</div>
       <div className="pagination">
-        <span>Page {currentPage}</span>
+        <span>Página {currentPage}</span>
         <button
           onClick={() => handlePageChange(currentPage - 1)}
           disabled={currentPage === 1}
         >
-          Previous
+          Anterior
         </button>
         <button
           onClick={() => handlePageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
-          Next
+          Siguiente
         </button>
       </div>
     </div>

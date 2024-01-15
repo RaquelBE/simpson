@@ -36,3 +36,7 @@
   max-width: 100%;
   border-radius: 4px;
 }
+
+h1 {
+  color:  #ffc107 !important;
+}

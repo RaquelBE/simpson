@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./SearchCharacter.css"; 
+import "./SearchCharacter.css";
 
 function SearchCharacter() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -7,13 +7,23 @@ function SearchCharacter() {
   const [filteredCharacters, setFilteredCharacters] = useState([]);
 
   useEffect(() => {
-    fetch("https://apisimpsons.fly.dev/api/personajes")
-      .then((response) => response.json())
-      .then((apiData) => {
-        console.log("Data from API:", apiData);
-        setCharacters(apiData.docs);
-      })
-      .catch((error) => console.error("Error fetching data:", error));
+    const fetchCharacters = async () => {
+      try {
+        const response = await fetch(
+          `https://apisimpsons.fly.dev/api/personajes`
+        );
+        console.log("PERSONAJE", characters)
+        const apiData = await response.json();
+
+        if (apiData.docs) {
+          setCharacters(apiData.docs);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCharacters();
   }, []);
 
   useEffect(() => {
@@ -21,11 +31,22 @@ function SearchCharacter() {
       character.Nombre.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredCharacters(filtered);
-  }, [characters, searchTerm]);
+  }, [searchTerm, characters]);
 
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
+
+  const renderCharacter = (character) => (
+    <div key={character._id} className="character-card">
+      <img src={character.Imagen} alt={character.Nombre} />
+      <p>Nombre: {character.Nombre}</p>
+      <p>Genero: {character.Genero}</p>
+      <p>Estado: {character.Estado}</p>
+      <p>Ocupación: {character.Ocupacion}</p>
+      <p>Historia: {character.Historia}</p>
+    </div>
+  );
 
   return (
     <div className="search-container">
@@ -38,15 +59,11 @@ function SearchCharacter() {
         onChange={handleSearchChange}
       />
       <div className="character-list">
-        {filteredCharacters.map((character) => (
-          <div key={character._id} className="character-card">
-            <img src={character.Imagen} alt={character.Nombre} />
-            <p>Name: {character.Nombre}</p>
-            <p>Gender: {character.Genero}</p>
-            <p>Status: {character.Estado}</p>
-            <p>Occupation: {character.Ocupacion}</p>
-          </div>
-        ))}
+        {filteredCharacters.length > 0 ? (
+          filteredCharacters.map(renderCharacter)
+        ) : (
+          <p>No se encontraron personajes.</p>
+        )}
       </div>
     </div>
   );
