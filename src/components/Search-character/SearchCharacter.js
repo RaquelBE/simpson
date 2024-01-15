@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./SearchCharacter.css"; // Importa el archivo de estilos CSS
+import "./SearchCharacter.css"; 
 
 function SearchCharacter() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,7 +29,7 @@ function SearchCharacter() {
 
   return (
     <div className="search-container">
-      <h1 className="search-title">Buscar Personaje</h1>
+      <h1 className="search-title">Buscamos a...</h1>
       <input
         type="text"
         className="search-input"
