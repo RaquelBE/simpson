@@ -18,7 +18,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
 const pages = ["Todos los Personajes", "Agregar Personaje", "Buscar Personaje"];
-const settings = ["Perfil", "Cuenta"];
+const settings = ["Perfil"];
 
 function Navbar({ onLogout }) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
